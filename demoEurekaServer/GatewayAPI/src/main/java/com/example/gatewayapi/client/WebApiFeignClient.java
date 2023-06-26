@@ -1,5 +1,6 @@
 package com.example.gatewayapi.client;
 
+import com.example.gatewayapi.dtos.request.UpsertUserRequest;
 import com.example.gatewayapi.dtos.response.UserResponse;
 import feign.Feign;
 import feign.Logger;
@@ -28,5 +29,17 @@ public class WebApiFeignClient {
 
     public UserResponse getUserById(Integer id) {
         return client.getUserById(id);
+    }
+
+    public UserResponse createUser(UpsertUserRequest request) {
+        return client.createUser(request);
+    }
+
+    public UserResponse updateUser(Integer id, UpsertUserRequest request) {
+        return client.updateUser(id, request);
+    }
+
+    public void deleteUser(Integer id) {
+        client.deleteUser(id);
     }
 }

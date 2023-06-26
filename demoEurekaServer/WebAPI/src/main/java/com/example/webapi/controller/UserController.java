@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/users-api")
 public class UserController {
     @Autowired
     private UserService userService;
@@ -36,13 +36,13 @@ public class UserController {
     }
 
     //4. Cập nhật user
-    @PutMapping("admin/users/{id}")
+    @PutMapping("admin/users/update/{id}")
     public UserResponse updateUser(@RequestBody UpsertUserRequest request, @PathVariable Integer id) {
         return userService.updateUser(request, id);
     }
 
     //5. Xóa user
-    @DeleteMapping("admin/users/{id}")
+    @DeleteMapping("admin/users/delete/{id}")
     public void deleteUser(@PathVariable Integer id) {
         userService.deleteUser(id);
     }

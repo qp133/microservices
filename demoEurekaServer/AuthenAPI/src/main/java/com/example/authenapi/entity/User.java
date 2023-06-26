@@ -1,4 +1,4 @@
-package com.example.webapi.entity;
+package com.example.authenapi.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

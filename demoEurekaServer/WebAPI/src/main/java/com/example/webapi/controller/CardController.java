@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/admin")
+@RequestMapping("/cards-api/admin")
 public class CardController {
     @Autowired
     private CardService cardService;
@@ -22,25 +22,25 @@ public class CardController {
 
     //2. Lấy chi tiết card
     @GetMapping("/cards/{id}")
-    public Card getBookById(@PathVariable Integer id) {
+    public Card getCardById(@PathVariable Integer id) {
         return cardService.getCardById(id);
     }
 
     //3. Tạo Card
     @PostMapping("cards")
-    public Card createBook(@RequestBody @Validated UpsertCardRequest request) {
+    public Card createCard(@RequestBody @Validated UpsertCardRequest request) {
         return cardService.createCard(request);
     }
 
     //4. Cập nhật Card
     @PutMapping("cards/{id}")
-    public Card updateBook(@PathVariable Integer id, @RequestBody @Validated UpsertCardRequest request) {
+    public Card updateCard(@PathVariable Integer id, @RequestBody @Validated UpsertCardRequest request) {
         return cardService.updateCard(id,request);
     }
 
     //5. Xóa Card
     @DeleteMapping("books/{id}")
-    public void deleteBook(@PathVariable Integer id) {
+    public void deleteCard(@PathVariable Integer id) {
         cardService.deleteCard(id);
     }
 }

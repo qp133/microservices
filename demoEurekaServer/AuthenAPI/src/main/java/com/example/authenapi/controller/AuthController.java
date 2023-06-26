@@ -1,5 +1,8 @@
 package com.example.authenapi.controller;
 
+import com.example.authenapi.dtos.request.LoginRequest;
+import com.example.authenapi.dtos.response.AuthResponse;
+import com.example.authenapi.service.AuthService;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -11,8 +14,7 @@ public class AuthController {
 
     @Autowired
     private AuthService authService;
-    @Autowired
-    private UserService userService;
+
     @PostMapping("handle-login")
     public AuthResponse login(@RequestBody LoginRequest request) {
         return authService.login(request);
