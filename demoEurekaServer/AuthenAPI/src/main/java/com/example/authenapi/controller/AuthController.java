@@ -3,9 +3,10 @@ package com.example.authenapi.controller;
 import com.example.authenapi.dtos.request.LoginRequest;
 import com.example.authenapi.dtos.response.AuthResponse;
 import com.example.authenapi.service.AuthService;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpSession;
 
 
 @RestController
@@ -17,11 +18,13 @@ public class AuthController {
 
     @PostMapping("handle-login")
     public AuthResponse login(@RequestBody LoginRequest request) {
+        System.out.println("Login Success - Quang");
         return authService.login(request);
     }
 
     @GetMapping("/handle-logout")
     public String logout(HttpSession session) {
+        System.out.println("Logout Success - Quang");
         return authService.logout(session);
     }
 

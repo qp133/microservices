@@ -1,6 +1,6 @@
 package com.example.authenapi.entity;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 import org.hibernate.Hibernate;
 

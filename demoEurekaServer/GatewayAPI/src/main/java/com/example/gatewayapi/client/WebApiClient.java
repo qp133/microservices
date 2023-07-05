@@ -10,24 +10,24 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@FeignClient(name = "web-api-services")
+@FeignClient(name = "web")
 public interface WebApiClient {
-    @RequestLine("GET /api/admin/users")
+    @RequestLine("GET /user-api/admin/users")
     @Headers("Content-Type: application/json")
     List<UserResponse> getUsers();
 
-    @RequestLine("GET /api/admin/users/{id}")
+    @RequestLine("GET /user-api/admin/users/{id}")
     @Headers("Content-Type: application/json")
     UserResponse getUserById(@Param("id") Integer id);
 
-    @RequestLine("POST /api/admin/users")
+    @RequestLine("POST /user-api/admin/users")
     @Headers("Content-Type: application/json")
     UserResponse createUser(@RequestBody UpsertUserRequest request);
 
-    @RequestLine("PUT /api/admin/users/update/{id}")
+    @RequestLine("PUT /user-api/admin/users/update/{id}")
     @Headers("Content-Type: application/json")
     UserResponse updateUser(@Param("id") Integer id, @RequestBody UpsertUserRequest request);
 
-    @RequestLine("DELETE /api/admin/users/delete/{id}")
+    @RequestLine("DELETE /user-api/admin/users/delete/{id}")
     void deleteUser(@Param("id") Integer id);
 }

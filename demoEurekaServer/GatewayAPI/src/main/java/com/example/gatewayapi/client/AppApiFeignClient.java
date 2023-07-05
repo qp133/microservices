@@ -11,7 +11,7 @@ public class AppApiFeignClient {
         this.client = Feign.builder()
                 .logger(new Slf4jLogger(AppApiClient.class))
                 .logLevel(Logger.Level.FULL)
-                .target(AppApiClient.class, "http://localhost:8080");
+                .target(AppApiClient.class, "http://localhost:8081");
     }
 
     public String getResource() {

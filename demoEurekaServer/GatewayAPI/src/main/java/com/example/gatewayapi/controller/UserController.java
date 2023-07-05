@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/user-api")
 public class UserController {
     @Autowired
     private WebApiFeignClient webApiFeignClient;

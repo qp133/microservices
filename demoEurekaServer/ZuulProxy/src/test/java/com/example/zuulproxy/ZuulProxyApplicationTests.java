@@ -10,5 +10,4 @@ class ZuulProxyApplicationTests {
     void contextLoads() {
     }
 
-
 }

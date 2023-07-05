@@ -4,7 +4,6 @@ import com.example.authenapi.dtos.request.LoginRequest;
 import com.example.authenapi.dtos.response.AuthResponse;
 import com.example.authenapi.secutity.CustomUserDetails;
 import com.example.authenapi.secutity.JwtUtils;
-import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -13,6 +12,8 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import javax.servlet.http.HttpSession;
 
 
 @Service

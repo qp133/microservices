@@ -5,6 +5,8 @@ import com.example.webapi.dtos.response.UserResponse;
 import com.example.webapi.dtos.request.UpdatePasswordRequest;
 import com.example.webapi.dtos.request.UpsertUserRequest;
 import com.example.webapi.service.UserService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,14 +14,18 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users-api")
+@RequestMapping(value = "user-api")
 public class UserController {
     @Autowired
     private UserService userService;
 
+    private static final Logger logger = LogManager.getLogger(UserController.class);
+
     //1. Lấy danh sách user
     @GetMapping("admin/users")
     public List<UserResponse> getUsers() {
+        logger.info("Received request to /users-api/admin/users my-endpoint");
+
         return userService.getUsers();
     }
 
