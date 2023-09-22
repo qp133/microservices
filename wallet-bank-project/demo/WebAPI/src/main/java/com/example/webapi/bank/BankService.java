@@ -1,7 +1,6 @@
 package com.example.webapi.bank;
 
 import com.example.webapi.dtos.request.*;
-import com.example.webapi.dtos.response.DataLinkResponse;
 import com.example.webapi.dtos.response.WalletResponse;
 import org.springframework.http.ResponseEntity;
 

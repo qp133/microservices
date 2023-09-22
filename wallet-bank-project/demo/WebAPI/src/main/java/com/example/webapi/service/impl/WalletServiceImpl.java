@@ -3,8 +3,6 @@ package com.example.webapi.service.impl;
 import com.example.webapi.bank.BankService;
 import com.example.webapi.dtos.request.*;
 import com.example.webapi.dtos.response.WalletResponse;
-import com.example.webapi.entity.User;
-import com.example.webapi.service.AuthenService;
 import com.example.webapi.service.WalletService;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -17,8 +15,6 @@ import org.springframework.stereotype.Service;
 public class WalletServiceImpl implements WalletService {
     @Autowired
     BankService bankService;
-
-
 
     static ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false).setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
