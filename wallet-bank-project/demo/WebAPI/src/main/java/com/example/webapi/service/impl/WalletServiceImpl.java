@@ -1,9 +1,10 @@
 package com.example.webapi.service.impl;
 
 import com.example.webapi.bank.BankService;
-import com.example.webapi.dtos.request.DataLinkRequest;
-import com.example.webapi.dtos.request.WalletRequest;
+import com.example.webapi.dtos.request.*;
 import com.example.webapi.dtos.response.WalletResponse;
+import com.example.webapi.entity.User;
+import com.example.webapi.service.AuthenService;
 import com.example.webapi.service.WalletService;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -17,36 +18,47 @@ public class WalletServiceImpl implements WalletService {
     @Autowired
     BankService bankService;
 
+
+
     static ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false).setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
     @Override
-    public ResponseEntity<WalletResponse> walletLink(DataLinkRequest dataLinkRequest) throws  Exception{
+    public ResponseEntity<WalletResponse> walletLink(String token, DataLinkRequest dataLinkRequest) throws  Exception{
         //map DataLinkRequest vào WalletRequest
         WalletRequest walletRequest = WalletRequest.builder().dataRequest(objectMapper.writeValueAsString(dataLinkRequest)).build();
 
-        ResponseEntity<WalletResponse> res = bankService.link(walletRequest);
-
-        return res;
+        return bankService.link(token, walletRequest, dataLinkRequest);
     }
 
     @Override
-    public WalletResponse walletOtp(WalletRequest walletRequest) {
-        return null;
+    public ResponseEntity<WalletResponse> walletOtp(DataOtpRequest dataOtpRequest) throws Exception {
+        //map DataOtpRequest vào WalletRequest
+        WalletRequest walletRequest = WalletRequest.builder().dataRequest(objectMapper.writeValueAsString(dataOtpRequest)).build();
+
+        return bankService.otp(walletRequest, dataOtpRequest);
     }
 
     @Override
-    public WalletResponse walletUnLink(WalletRequest walletRequest) {
-        return null;
+    public ResponseEntity<WalletResponse> walletUnLink(DataUnlinkRequest dataUnlinkRequest) throws Exception {
+        //map DataUnlinkRequest vào WalletRequest
+        WalletRequest walletRequest = WalletRequest.builder().dataRequest(objectMapper.writeValueAsString(dataUnlinkRequest)).build();
+
+        return bankService.unlink(walletRequest, dataUnlinkRequest);
     }
 
     @Override
-    public WalletResponse walletDeposit(WalletRequest walletRequest) {
-        return null;
+    public ResponseEntity<WalletResponse> walletDeposit(DataDepositRequest dataDepositRequest) throws Exception{
+        //map DataDepositRequest vào WalletRequest
+        WalletRequest walletRequest = WalletRequest.builder().dataRequest(objectMapper.writeValueAsString(dataDepositRequest)).build();
+
+        return bankService.deposit(walletRequest, dataDepositRequest);
     }
 
     @Override
-    public WalletResponse walletWithdraw(WalletRequest walletRequest) {
-        return null;
-    }
+    public ResponseEntity<WalletResponse> walletWithdraw(DataDepositRequest dataWithdrawRequest) throws Exception {
+        //map DataWithdrawRequest vào WalletRequest
+        WalletRequest walletRequest = WalletRequest.builder().dataRequest(objectMapper.writeValueAsString(dataWithdrawRequest)).build();
+
+        return bankService.withdraw(walletRequest, dataWithdrawRequest);    }
 
 }

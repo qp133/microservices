@@ -1,6 +1,5 @@
 package com.example.authenapi.secutity;
 
-
 import com.example.authenapi.entity.User;
 import com.example.authenapi.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +22,8 @@ public class CustomUserDetailsService implements UserDetailsService {
         if(!userOptional.isPresent()) {
             throw new UsernameNotFoundException("Not found user with email = " + email);
         }
-        return new CustomUserDetails(userOptional.get());
+        return CustomUserDetails.builder()
+                .user(userOptional.get())
+                .build();
     }
 }

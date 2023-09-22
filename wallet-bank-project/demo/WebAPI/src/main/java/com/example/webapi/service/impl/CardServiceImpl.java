@@ -32,10 +32,10 @@ public class CardServiceImpl implements CardService {
     @Override
     public Card createCard(UpsertCardRequest request) {
         Card card = Card.builder()
-                .card_number(request.getCardNumber())
-                .card_holder_name(request.getCardHolderName())
-                .card_exp(request.getCardExp())
-                .card_ccv(request.getCardCcv())
+                .card_number(request.getCard_number())
+                .card_holder_name(request.getCard_holder_name())
+                .card_exp(request.getCard_exp())
+                .card_ccv(request.getCard_ccv())
                 .build();
         return cardRepository.save(card);
     }
@@ -45,11 +45,10 @@ public class CardServiceImpl implements CardService {
         try {
             Card card = cardRepository.findById(id).get();
 
-            card.setCard_number(request.getCardNumber());
-            card.setCard_holder_name(request.getCardHolderName());
-            card.setCard_exp(request.getCardExp());
-            card.setCard_ccv(request.getCardCcv());
-
+            card.setCard_number(request.getCard_number());
+            card.setCard_holder_name(request.getCard_holder_name());
+            card.setCard_exp(request.getCard_exp());
+            card.setCard_ccv(request.getCard_ccv());
             return cardRepository.save(card);
         } catch (Exception e) {
             throw new NotFoundException("Not found card with id = " + id);

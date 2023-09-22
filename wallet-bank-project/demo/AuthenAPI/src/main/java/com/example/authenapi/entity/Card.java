@@ -1,10 +1,8 @@
-package com.example.webapi.entity;
+package com.example.authenapi.entity;
 
 import lombok.*;
-import org.hibernate.Hibernate;
 
 import javax.persistence.*;
-import java.util.Objects;
 
 @Getter
 @Setter
@@ -32,10 +30,14 @@ public class Card {
     private String card_ccv;
 
     @Column(name = "amount")
-    private Integer amount;
+    private String amount;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
+    @PreRemove
+    public void preRemove() {
+        this.setUser(null);
+    }
 }

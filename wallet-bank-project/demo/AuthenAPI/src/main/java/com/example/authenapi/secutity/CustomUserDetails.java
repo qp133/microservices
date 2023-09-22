@@ -1,10 +1,7 @@
 package com.example.authenapi.secutity;
 
 import com.example.authenapi.entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,14 +14,16 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class CustomUserDetails implements UserDetails {
+
+    @Getter
     private User user;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<SimpleGrantedAuthority> roles = new ArrayList<>();
         user.getRoles().forEach(role -> roles.add(new SimpleGrantedAuthority("ROLE_" + role))); // ROLE_USER, ROLE_ADMIN
-
         return roles;
     }
 
@@ -36,6 +35,42 @@ public class CustomUserDetails implements UserDetails {
     @Override
     public String getUsername() {
         return user.getEmail();
+    }
+
+    public String getFullname() {
+        return user.getFullName();
+    }
+
+    public String getUniqueIdName() {
+        return user.getUniqueIdName();
+    }
+
+    public String getUniqueIdValue() {
+        return user.getUniqueIdValue();
+    }
+
+    public String getPhoneNumber() {
+        return user.getPhoneNumber();
+    }
+
+    public String getCustomerType() {
+        return user.getCustomerType();
+    }
+
+    public String getCustomerNo() {
+        return user.getCustomerNo();
+    }
+
+    public String getAccountNo() {
+        return user.getAccountNo();
+    }
+
+    public String getClientId() {
+        return user.getClientId();
+    }
+
+    public String getClientSecret() {
+        return user.getClientSecret();
     }
 
     @Override
@@ -57,4 +92,5 @@ public class CustomUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }

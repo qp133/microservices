@@ -1,8 +1,13 @@
 package com.example.webapi.dtos.request;
 
 import com.example.webapi.entity.Card;
+import com.example.webapi.entity.User;
+import com.example.webapi.service.AuthenService;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
+import org.apache.http.HttpHeaders;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestHeader;
 
 @Getter
 @Setter
@@ -10,6 +15,7 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class DataLinkRequest {
+
     @JsonProperty(value = "unique_id_name")
     private String unique_id_name;
 
@@ -33,4 +39,6 @@ public class DataLinkRequest {
 
     @JsonProperty(value = "card_info")
     private Card card_info;
+
+
 }

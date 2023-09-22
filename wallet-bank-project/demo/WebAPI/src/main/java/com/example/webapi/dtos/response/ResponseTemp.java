@@ -8,7 +8,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class ResponseTemp {
+public class ResponseTemp<E> {
     @Data
     public static class ResCode {
         private String error_code;
@@ -20,5 +20,5 @@ public class ResponseTemp {
     private ResCode res_code;
 
     @JsonProperty(value = "data")
-    private WalletResponse data;
+    private E data;
 }

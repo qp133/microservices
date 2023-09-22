@@ -10,8 +10,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class UpsertCardRequest {
-    private String cardNumber;
-    private String cardHolderName;
-    private String cardExp;
-    private String cardCcv;
+    private String card_number;
+    private String card_holder_name;
+    private String card_exp;
+    private String card_ccv;
 }

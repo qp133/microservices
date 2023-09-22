@@ -9,6 +9,7 @@ import lombok.*;
 @Setter
 @Builder
 public class WalletResponse {
+
     private String msg_id;
 
     private String data;

@@ -12,6 +12,9 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import javax.servlet.Filter;
 
@@ -56,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/api/auth/**", "/api/v1/**", "eureka/**").permitAll() // Cho phép ai cũng có thể đi qua
+                .antMatchers("/api/auth/**", "/api/v1/**").permitAll() // Cho phép ai cũng có thể đi qua
                 .antMatchers("/api/admin/**").hasRole("ADMIN") // Cần quyền admin mới được đi qua
                 .antMatchers("/api/user/**").hasRole("USER")
                 .and()
@@ -69,4 +72,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .addFilterBefore((Filter) customFilter, UsernamePasswordAuthenticationFilter.class);
     }
+
 }

@@ -1,17 +1,16 @@
 package com.example.webapi.service;
 
-import com.example.webapi.dtos.request.DataLinkRequest;
-import com.example.webapi.dtos.request.WalletRequest;
+import com.example.webapi.dtos.request.*;
 import com.example.webapi.dtos.response.WalletResponse;
 import org.springframework.http.ResponseEntity;
 
 public interface WalletService {
-    ResponseEntity<WalletResponse> walletLink(DataLinkRequest dataLinkRequest) throws Exception;
-    WalletResponse walletOtp(WalletRequest walletRequest);
+    ResponseEntity<WalletResponse> walletLink(String token, DataLinkRequest dataLinkRequest) throws Exception;
+    ResponseEntity<WalletResponse> walletOtp(DataOtpRequest dataOtpRequest) throws Exception;
 
-    WalletResponse walletUnLink(WalletRequest walletRequest);
+    ResponseEntity<WalletResponse> walletUnLink(DataUnlinkRequest dataUnlinkRequest) throws Exception;
 
-    WalletResponse walletDeposit(WalletRequest walletRequest);
+    ResponseEntity<WalletResponse> walletDeposit(DataDepositRequest dataDepositRequest) throws Exception;
 
-    WalletResponse walletWithdraw(WalletRequest walletRequest);
+    ResponseEntity<WalletResponse> walletWithdraw(DataDepositRequest dataWithdrawRequest) throws Exception;
 }
