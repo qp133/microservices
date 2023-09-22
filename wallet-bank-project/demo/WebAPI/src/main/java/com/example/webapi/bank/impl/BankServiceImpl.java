@@ -167,7 +167,7 @@ public class BankServiceImpl implements BankService {
                         .transaction_id(RandomUtils.generateRandomString(10))
                         .ref_no(dataWithdrawRequest.getRef_no())
                         .amount(dataWithdrawRequest.getAmount())
-                        .type("DEPOSIT")
+                        .type("WITHDRAW")
                         .description(dataWithdrawRequest.getDescription())
                         .date_time(dataWithdrawRequest.getDate_time())
                         .build())
