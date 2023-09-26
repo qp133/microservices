@@ -52,7 +52,6 @@ public class CardServiceImpl implements CardService {
             return cardRepository.save(card);
         } catch (Exception e) {
             throw new NotFoundException("Not found card with id = " + id);
-
         }
     }
 
@@ -63,7 +62,6 @@ public class CardServiceImpl implements CardService {
             cardRepository.delete(card);
         } catch (Exception e) {
             throw new NotFoundException("Not found card with id = " + id);
-
         }
     }
 }
